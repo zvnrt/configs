@@ -1,0 +1,228 @@
+#
+# WMFS2 configuration file
+#
+
+# Possible file inclusion:
+# @include "file"
+
+@include "~/.config/wmfs/extras/rules"
+
+# Multi theme section
+[themes]
+
+    [theme]
+        # Custom theme
+        name = "Niggurath"
+	      #font = "Terminus 8"
+         font = "-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1"
+        # Bars
+        bars_width = "18"
+        bars_fg = "#3d3d3d"
+        bars_bg = "#080808"
+        # Element tags
+        tags_normal_fg = "#999999"
+        tags_normal_bg = "#0b0b0b"
+        #tags_normal_statusline = ""
+        tags_sel_fg = "#a6a6a6"
+        tags_sel_bg = "#651532"
+        #tags_sel_statusline = "^i[0;0;30;20;/home/holmes/.config/wmfs/icons/square_sel.png]"
+        tags_occupied_fg = "#999999"
+        tags_occupied_bg = "#171717"
+        #tags_occupied_statusline = "^i[0;0;30;20;/home/holmes/.config/wmfs/icons/square_unsel.png]"
+        tags_urgent_fg = "#7D7D7D"
+        tags_urgent_bg = "#651532"
+        tags_urgent_statusline = "\s[right;#55122a; Urgente!]"
+        tags_border_color = "#651532"
+        tags_border_width = 0
+        # Frame / Client
+        client_normal_fg = "#999999"
+        client_normal_bg = "#0b0b0b"
+        client_normal_statusline = "\s[right;#651532; ··· ]"
+        client_sel_fg = "#a6a6a6"
+        client_sel_bg = "#0b0b0b"
+        client_sel_statusline = "\s[right;#156549; Activo ]"
+        frame_bg = "#A6A6A6"
+        client_titlebar_width = 14
+        client_border_width = 1
+    [/theme]
+
+[/themes]
+
+[bars]
+
+  [bar]
+     name = testbar
+     position = 0
+     screen = 0
+     elements = "tsy"   # element order in bar
+     theme = "Niggurath"
+  [/bar]
+
+[/bars]
+
+[tags]
+
+  # Use no screen option or screen = -1 to set tag on each screen
+ 
+  #[tag] screen = 0 name = "   " statusline = "^i[6;3;14;14;/home/holmes/.config/wmfs/icons/firefox2.png]" [/tag]
+  #[tag] screen = 0 name = "   " statusline = "^i[6;3;14;12;/home/holmes/.config/wmfs/icons//terminal.png]" [/tag]
+  #[tag] screen = 0 name = "   " statusline = "^i[7;4;12;11;/home/holmes/.config/wmfs/icons/sublime.png]" [/tag]
+  #[tag] screen = 0 name = "   " statusline = "^i[5;3;16;12;/home/holmes/.config/wmfs/icons/chat.png]" [/tag]
+  #[tag] screen = 0 name = "   " statusline = "^i[6;2;14;14;/home/holmes/.config/wmfs/icons/game.png]" [/tag]
+
+  [tag] screen = -1 name = "1" [/tag]
+  [tag] screen = -1 name = "2" [/tag]
+  [tag] screen = -1 name = "3" [/tag]
+  [tag] screen = -1 name = "4" [/tag]
+  [tag] screen = -1 name = "5" [/tag]
+
+  
+  # Mousebinds associated to Tags element button
+  [mouse] button = "1" func = "tag_click" [/mouse]
+  [mouse] button = "4" func = "tag_next"  [/mouse]
+  [mouse] button = "5" func = "tag_prev"  [/mouse]
+
+
+[/tags]
+
+[client]
+
+  # Padding between clients (default: 0):
+  padding = 50
+  
+  # Give focus to new created client 
+  autofocus = false
+  
+  theme = "Niggurath"
+  key_modifier = "Super"
+
+  [mouse] button = "1" func = "client_focus_click"    [/mouse]
+  [mouse] button = "1" func = "mouse_swap"            [/mouse]
+  [mouse] button = "2" func = "mouse_tab"             [/mouse]
+  [mouse] button = "3" func = "mouse_resize"          [/mouse]
+  [mouse] button = "4" func = "client_focus_next_tab" [/mouse]
+  [mouse] button = "5" func = "client_focus_prev_tab" [/mouse]
+
+[/client]
+
+[keys]
+
+  [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "urxvtc" [/key]
+
+  [key] mod = {"Control", "Alt"} key = "q" func = "quit" [/key]
+  [key] mod = {"Control", "Alt"} key = "r" func = "reload" [/key]
+
+  # Tag manipulation
+  [key] mod = {"Super"} key = "1" func = "tag_set" cmd = "0" [/key]
+  [key] mod = {"Super"} key = "2" func = "tag_set" cmd = "1" [/key]
+  [key] mod = {"Super"} key = "3" func = "tag_set" cmd = "2" [/key]
+  [key] mod = {"Super"} key = "4" func = "tag_set" cmd = "3" [/key]
+  [key] mod = {"Super"} key = "5" func = "tag_set" cmd = "4" [/key]
+  
+  [key] mod = {"Super", "Shift"} key = "1" func = "tag_client" cmd = "0" [/key]
+  [key] mod = {"Super", "Shift"} key = "2" func = "tag_client" cmd = "1" [/key]
+  [key] mod = {"Super", "Shift"} key = "3" func = "tag_client" cmd = "2" [/key]
+  [key] mod = {"Super", "Shift"} key = "4" func = "tag_client" cmd = "3" [/key]
+  [key] mod = {"Super", "Shift"} key = "5" func = "tag_client" cmd = "4" [/key]
+
+  [key] mod = {"Super"} key = "minus" func = "tag_del" [/key]
+  [key] mod = {"Super", "Shift"} key = "minus" func = "tag_new" [/key]
+
+  # tag function: cmd = nameofthetag
+  #[key] mod = {"Super"} key = "z" func = "tag" cmd = "2" [/key]
+
+  [key] mod = {"Control"} key = "Right" func = "tag_next" [/key]
+  [key] mod = {"Control"} key = "Left"  func = "tag_prev" [/key]
+
+  [key] mod = {"Control"} key = "Up"  func = "screen_next" [/key]
+  [key] mod = {"Control"} key = "Down" func = "screen_prev" [/key]
+
+  [key] mod = {"Super"} key = "q" func = "client_close" [/key]
+
+  # Focus next / prev client and next / prev tabbed client
+  [key] mod = { "Alt" }            key = "Tab" func = "client_focus_next" [/key]
+  [key] mod = { "Alt", "Shift" }   key = "Tab" func = "client_focus_prev" [/key]
+  [key] mod = { "Super" }          key = "Tab" func = "client_focus_next_tab" [/key]
+  [key] mod = { "Super", "Shift" } key = "Tab" func = "client_focus_prev_tab" [/key]
+
+  # Focus next client with direction
+  [key] mod = {"Shift"} key = "Left" func = "client_focus_left"   [/key]
+  [key] mod = {"Shift"} key = "Right" func = "client_focus_right"  [/key]
+  [key] mod = {"Shift"} key = "Up" func = "client_focus_top"    [/key]
+  [key] mod = {"Shift"} key = "Down" func = "client_focus_bottom" [/key]
+
+  # swap next client with direction:
+  [key] mod = {"Control", "Shift"} key = "Left" func = "client_swap_left"   [/key]
+  [key] mod = {"Control", "Shift"} key = "Right" func = "client_swap_right"  [/key]
+  [key] mod = {"Control", "Shift"} key = "Up" func = "client_swap_top"    [/key]
+  [key] mod = {"Control", "Shift"} key = "Down" func = "client_swap_bottom" [/key]
+
+  # Resize selected tiled client with direction
+  [key] mod = {"Super"} key = "Left" func = "client_resize_left"   cmd = "20" [/key]
+  [key] mod = {"Super"} key = "Right" func = "client_resize_left"   cmd = "-20" [/key]
+  [key] mod = {"Super"} key = "Up" func = "client_resize_top"    cmd = "20" [/key]
+  [key] mod = {"Super"} key = "Down" func = "client_resize_top"    cmd = "-20" [/key]
+  [key] mod = {"Super", "Control"} key = "Left" func = "client_resize_right"  cmd = "-20" [/key]
+  [key] mod = {"Super", "Control"} key = "Right" func = "client_resize_right"  cmd = "20" [/key]
+  [key] mod = {"Super", "Control"} key = "Up" func = "client_resize_bottom" cmd = "-20" [/key]
+  [key] mod = {"Super", "Control"} key = "Down" func = "client_resize_bottom" cmd = "20" [/key]
+
+  # Tabbing command
+  [key] mod = {"Alt", "Shift"} key = "h" func = "client_tab_left"   [/key]
+  [key] mod = {"Alt", "Shift"} key = "l" func = "client_tab_right"  [/key]
+  [key] mod = {"Alt", "Shift"} key = "k" func = "client_tab_top"    [/key]
+  [key] mod = {"Alt", "Shift"} key = "j" func = "client_tab_bottom" [/key]
+  [key] mod = {"Alt", "Shift"} key = "u" func = "client_untab" [/key]
+  [key] mod = {"Super"}        key = "t" func = "client_tab_next_opened" [/key]
+
+  # Layout manipulation
+  [key] mod = {"Super"}          key = "m" func = "layout_vmirror" [/key]
+  [key] mod = {"Super", "Shift"} key = "m" func = "layout_hmirror" [/key]
+  [key] mod = {"Super"}          key = "r" func = "layout_rotate_right" [/key]
+  [key] mod = {"Super", "Shift"} key = "r" func = "layout_rotate_left" [/key]
+
+  [key] mod = {"Control", "Super", "Alt"} key = "Left" func = "layout_integrate_left" [/key]
+  [key] mod = {"Control", "Super", "Alt"} key = "Down" func = "layout_integrate_bottom" [/key]
+  [key] mod = {"Control", "Super", "Alt"} key = "Up" func = "layout_integrate_top" [/key]
+  [key] mod = {"Control", "Super", "Alt"} key = "Right" func = "layout_integrate_right" [/key]
+
+  # Layout set historic travelling function (TESTING)
+  [key] mod = {"Super"} key = "o" func = "layout_prev_set" [/key]
+  [key] mod = {"Super", "Shift"} key = "o" func = "layout_next_set" [/key]
+
+  # Toggle client free/tile
+  [key] mod = {"Super"} key = "f" func = "client_toggle_free" [/key]
+
+  # Launcher
+  [key] key = "Menu" func = "spawn" cmd = "dmenu_run -hist /home/holmes/.dmenu-history -fn '-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1' -nf '#a9a9a9' -nb '#0b0b0b' -sf '#a9a9a9' -sb '#156549' " [/key]
+  
+   # MPD related
+  [key] mod = {"Control", "Alt"}  key = "Up" func = "spawn" cmd = "ncmpcpp toggle" [/key]
+  [key] mod = {"Control", "Alt"}  key = "Right" func = "spawn" cmd = "ncmpcpp next" [/key]
+  [key] mod = {"Control", "Alt"}  key = "Left" func = "spawn" cmd = "ncmpcpp prev" [/key]
+  [key] mod = {"Control", "Alt"}  key = "Dowm" func = "spawn" cmd = "ncmpcpp stop" [/key]
+
+  # Browser 
+  [key] mod = {"Super"}  key = "w" func = "spawn" cmd = "firefox" [/key]
+  [key] mod = {"Super", "Control"}  key = "w" func = "spawn" cmd = "GTK2_RC_FILES=/usr/share/themes/Dyne/gtk-2.0/gtkrc google-chrome" [/key]
+    
+
+  # Volume
+  [key] mod = {"Alt"}  key = "Up" func = "spawn" cmd = "amixer -q set Master 5%+" [/key]
+  [key] mod = {"Alt"}  key = "Down" func = "spawn" cmd = "amixer -q set Master 5%-" [/key]
+  [key] mod = {"Alt"}  key = "m" func = "spawn" cmd = "amixer -q set Master playback toggle" [/key]
+  [key] mod = {"Control", "Alt"}  key = "m" func = "spawn" cmd = "amixer -q set Master playback 100%" [/key]  
+
+  # Copy to clipboard
+  [key] mod = {"Super"}  key = "c" func = "spawn" cmd = "xsel -p -o | xsel -i -b" [/key]
+  
+  # Sublime 
+  [key] mod = {"Super"}  key = "s" func = "spawn" cmd = "subl" [/key]  
+  
+  # Gimp
+  [key] mod = {"Super"}  key = "g" func = "spawn" cmd = "gimp" [/key]  
+
+  # Screen locker
+  [key] mod = {"Super"}  key = "l" func = "spawn" cmd = "slock" [/key] 
+
+[/keys]
