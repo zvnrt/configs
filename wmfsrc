@@ -8,45 +8,45 @@
 [themes]
     [theme]
         # Custom theme
-        name = "Eyrionn"
+        name = "Sothoth"
         font = "-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1"
-        
+
         # Bars
         bars_width = "15"
-        bars_fg = "#555555"
-        bars_bg = "#0b0b0b"
-        
+        bars_fg = "#999999"
+        bars_bg = "#1f1f1f"
+
         # Element tags
         tags_normal_fg = "#888888"
-        tags_normal_bg = "#0b0b0b"
+        tags_normal_bg = "#1f1f1f"
         #tags_normal_statusline = ""
-        
-        tags_sel_fg = "#a6a6a6"
-        tags_sel_bg = "#651532"
-        
+
+        tags_sel_fg = "#a9a9a9"
+        tags_sel_bg = "#303030"
+
         tags_occupied_fg = "#888888"
-        tags_occupied_bg = "#0b0b0b"
-        tags_occupied_statusline = "\R[1;12;12;2;#55122a]"
+        tags_occupied_bg = "#1f1f1f"
+        tags_occupied_statusline = "\R[1;12;12;3;#292929]"
 
         tags_urgent_fg = "#7D7D7D"
         tags_urgent_bg = "#651532"
         tags_urgent_statusline = "\s[right;#55122a; Urgente!]"
-        
+
         tags_border_color = "#651532"
         tags_border_width = 0
-        
+
         # Frame / Client
         client_normal_fg = "#999999"
-        client_normal_bg = "#0b0b0b"
-        client_normal_statusline = "\s[right;#55122a; ··· ]"
-        
+        client_normal_bg = "#1f1f1f"
+        client_normal_statusline = "\s[right;#703b47; ··· ]"
+
         client_sel_fg = "#a6a6a6"
-        client_sel_bg = "#0b0b0b"
-        client_sel_statusline = "\s[right;#12553d; Activo ]"
-        
+        client_sel_bg = "#1f1f1f"
+        client_sel_statusline = "\s[right;#7b8748; <<< ]"
+
         frame_bg = "#A6A6A6"
-        client_titlebar_width = 15
-        client_border_width = 1
+        client_titlebar_width = 13
+        client_border_width = 0
     [/theme]
 
 [/themes]
@@ -55,10 +55,10 @@
 
   [bar]
      name = topbar
-     position = 0
+     position = 1
      screen = 0
      elements = "tsy"   # element order in bar
-     theme = "Eyrionn"
+     theme = "Sothoth"
   [/bar]
 
 [/bars]
@@ -66,13 +66,13 @@
 [tags]
 
   # Use no screen option or screen = -1 to set tag on each screen
- 
-  [tag] screen = 0 name = "1" [/tag]
-  [tag] screen = 0 name = "2" [/tag]
-  [tag] screen = 0 name = "3" [/tag]
-  [tag] screen = 0 name = "4" [/tag]
-  [tag] screen = 0 name = "5" [/tag]
-  
+
+  [tag] screen = 0 name = " " statusline = "^i[0;0;15;15;/home/holmes/.config/wmfs/icons/alien1.png]" [/tag]
+  [tag] screen = 0 name = " " statusline = "^i[0;0;15;15;/home/holmes/.config/wmfs/icons/alien2.png]" [/tag]
+  [tag] screen = 0 name = " " statusline = "^i[0;0;15;15;/home/holmes/.config/wmfs/icons/alien3.png]" [/tag]
+  [tag] screen = 0 name = " " statusline = "^i[0;0;15;15;/home/holmes/.config/wmfs/icons/alien4.png]" [/tag]
+  [tag] screen = 0 name = " " statusline = "^i[0;0;15;15;/home/holmes/.config/wmfs/icons/alien5.png]" [/tag]
+
   # Mousebinds associated to Tags element button
   [mouse] button = "1" func = "tag_click" [/mouse]
   [mouse] button = "4" func = "tag_next"  [/mouse]
@@ -83,12 +83,12 @@
 [client]
 
   # Padding between clients (default: 0):
-  padding = 40
-  
-  # Give focus to new created client 
+  padding = 30
+
+  # Give focus to new created client
   autofocus = true
-  
-  theme = "Niggurath"
+
+  theme = "Zvnrt"
   key_modifier = "Super"
 
   [mouse] button = "1" func = "client_focus_click"    [/mouse]
@@ -102,9 +102,9 @@
 
 [keys]
 
-  [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "urxvtc" [/key]
-  [key] mod = {"Super", "Shift"} key = "Return" func = "spawn" cmd = "termite" [/key]
-  
+  [key] mod = {"Super"} key = "Return" func = "spawn" cmd = "termite" [/key]
+  [key] mod = {"Super", "Shift"} key = "Return" func = "spawn" cmd = "urxvtc" [/key]
+
   [key] mod = {"Control", "Alt"} key = "q" func = "quit" [/key]
   [key] mod = {"Control", "Alt"} key = "r" func = "reload" [/key]
 
@@ -198,34 +198,36 @@
   [key] mod = {"Super"} key = "f" func = "client_toggle_free" [/key]
 
   # Launcher
-  [key] key = "Menu" func = "spawn" cmd = "dmenu_run -hist /home/holmes/Scripts/dmenu-history -fn '-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1' -nf '#888888' -nb '#0b0b0b' -sf '#a6a6a6' -sb '#171717' -f -i " [/key]
-  
-  # MPD
-  [key] mod = {"Control", "Alt"}  key = "Up" func = "spawn" cmd = "ncmpcpp toggle" [/key]
-  [key] mod = {"Control", "Alt"}  key = "Right" func = "spawn" cmd = "ncmpcpp next" [/key]
-  [key] mod = {"Control", "Alt"}  key = "Left" func = "spawn" cmd = "ncmpcpp prev" [/key]
-  [key] mod = {"Control", "Alt"}  key = "Dowm" func = "spawn" cmd = "ncmpcpp stop" [/key]
+  [key] key = "Menu" func = "spawn" cmd = "dmenu_run -hist /home/holmes/Scripts/dmenu-history -fn '-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso8859-1' -nf '#555555' -nb '#1f1f1f' -sf '#a6a6a6' -sb '#1f1f1f' -f -i " [/key]
 
-  # Browser 
+  # MPD
+  [key] mod = {"Control", "Alt"}  key = "Up" func = "spawn" cmd = "mpc toggle" [/key]
+  [key] mod = {"Control", "Alt"}  key = "Right" func = "spawn" cmd = "mpc next" [/key]
+  [key] mod = {"Control", "Alt"}  key = "Left" func = "spawn" cmd = "mpc prev" [/key]
+  [key] mod = {"Control", "Alt"}  key = "Dowm" func = "spawn" cmd = "mpc stop" [/key]
+
+  # Browser
   [key] mod = {"Super"}  key = "w" func = "spawn" cmd = "firefox" [/key]
   [key] mod = {"Super", "Shift"}  key = "w" func = "spawn" cmd = "chromium" [/key]
-    
+
   # Volume
   [key] mod = {"Alt"}  key = "Up" func = "spawn" cmd = "amixer -q set Master 5%+" [/key]
   [key] mod = {"Alt"}  key = "Down" func = "spawn" cmd = "amixer -q set Master 5%-" [/key]
   [key] mod = {"Alt"}  key = "m" func = "spawn" cmd = "amixer -q set Master playback toggle" [/key]
-  [key] mod = {"Control", "Alt"}  key = "m" func = "spawn" cmd = "amixer -q set Master playback 100%" [/key]  
+  [key] mod = {"Control", "Alt"}  key = "m" func = "spawn" cmd = "amixer -q set Master playback 100%" [/key]
 
   # Copy to clipboard
   [key] mod = {"Super"}  key = "c" func = "spawn" cmd = "xsel -p -o | xsel -i -b" [/key]
-  
-  # Sublime 
-  [key] mod = {"Super"}  key = "s" func = "spawn" cmd = "subl" [/key]  
-  
+
+  # Sublime
+  [key] mod = {"Super"}  key = "s" func = "spawn" cmd = "subl3" [/key]
+
   # Gimp
-  [key] mod = {"Super"}  key = "g" func = "spawn" cmd = "gimp" [/key]  
+  [key] mod = {"Super"}  key = "g" func = "spawn" cmd = "gimp" [/key]
 
   # Screen locker
-  [key] mod = {"Super"}  key = "l" func = "spawn" cmd = "slock" [/key] 
+  #[key] mod = {"Super"}  key = "l" func = "spawn" cmd = "slock" [/key]
+
+  [key] mod = {"Super"} key = "l" func = "spawn" cmd = "twmnc -c 'Prueba de sistema de notificaciones'"[/key]
 
 [/keys]
